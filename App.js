@@ -6,13 +6,21 @@ import {AppLoading} from 'expo';
 import * as Font from 'expo-font';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import ReduxThunk from 'redux-thunk';
+import * as Notifications from 'expo-notifications';
+
 
 import ProductsReducer from './store/reducers/products';
 import CartReducer from './store/reducers/cart';
 import ShopNavigator from './navigation/ShopNavigator';
-import NavigationContainer from './navigation/NavigationContainer'
+import AppNavigator from './navigation/AppNavigator'
 import ordersReducer from './store/reducers/order';
 import AuthReducer from './store/reducers/auth';
+
+Notifications.setNotificationHandler({
+  handleNotification: async () => {
+    return { shouldShowAlert: true };
+  },
+});
 
 const rootReducer = combineReducers({
    products : ProductsReducer,
@@ -40,7 +48,7 @@ export default function App() {
   }
   return (
     <Provider store={store}>
-        <NavigationContainer/>
+        <AppNavigator/>
     </Provider>
     
   );

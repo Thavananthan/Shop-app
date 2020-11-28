@@ -7,7 +7,7 @@ import * as cartAction from '../../store/actions/cart';
 
 const ProductDetails = props => {
 
-    const proudctId = props.navigation.getParam('productId');
+    const proudctId = props.route.params ? props.route.params.productId:null;
     const selectedProduct = useSelector(state => state.products.availableProducts.find(prod => prod.id ===proudctId));
     const dispatch = useDispatch();
 
@@ -24,11 +24,11 @@ const ProductDetails = props => {
     );
 }
 
-ProductDetails.navigationOptions = navData => {
+export const screenOptions = navData => {
     return {
-        headerTitle: navData.navigation.getParam('productTitle')
-    }
-}
+      headerTitle: navData.route.params ? navData.route.params.productTitle:null
+    };
+};
 
 const styles = StyleSheet.create({
     image:{

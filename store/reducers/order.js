@@ -1,4 +1,4 @@
-import Order from '../../models/orders';
+import Order from '../../models/order';
 import {ADD_ORDER, SET_ORDER} from '../actions/order';
 
 const initialState = {
